@@ -2,11 +2,24 @@ import os
 import random
 from time import sleep
 from pyrogram import filters
-from bot import LOG, app, advance_config, chats_data, from_chats, to_chats, \
+from Bot import LOG, app, advance_config, chats_data, from_chats, to_chats, \
                 remove_strings, replace_string, sudo_users
-from bot.helper.utils import get_formatted_chat
+from Bot.helper.utils import get_formatted_chat
 
 LOG.info("Welcome, this is the telegram-message-forwarder-bot. main routine...")
+
+@app.on_message(filters.command("start"))
+async def(client, message):
+    await message.reply_photo(
+        photo=random.choice(PICS)
+        caption=f"""
+<b>**Hi
+
+I am a Simple Telegram Message Forward Bot
+
+Hit /help for know more..!🔥
+
+
 
 @app.on_message(filters.chat(from_chats) & filters.incoming)
 def work(client, message):
